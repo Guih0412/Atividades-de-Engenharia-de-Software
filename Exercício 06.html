@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversão de Data</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="quadro">    
+    <h2>Digite uma data:</h2>
+    <label>Data: <input type="text" id="date"></label><br><br>
+    <button onclick="converter()"> Converter data</button>
+</div>
+<script>
+
+function converter(){
+
+
+   // Obtém o valor inserido pelo usuário
+  let dataInserida= document.getElementById("date").value;
+
+
+
+  // Divide a string em partes usando a barra (/) 
+  let partes= dataInserida.split("/");
+
+  // Se entrada nao tiver 3 partes//
+  if (partes.length !==3){
+    alert("Insira uma data com dd/mm/aaaa");
+    return;
+  }
+
+  // Atribui as partes divididas a variáveis
+  let dia= partes[0];
+  let mes= partes[1];
+  let ano= partes[2];
+
+
+   // Array com os nomes dos meses
+   let mesExtenso = [
+        "janeiro", "fevereiro", "março", "abril", "maio", "junho", 
+        "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+            ];
+    
+
+    
+    //verifica se o mes é valido//
+    if(mes <1 || mes>12){
+        alert("Insira um mes entre 1 e 12")
+    }        
+
+
+    //convrte o numero do mes em mes por extenso
+
+    let nomeMes= mesExtenso[parseInt(mes -1)]
+
+    // exibe data por extenso//
+        let dataExtenso= `${dataInserida} corresponde ao dia ${dia} de ${nomeMes} de ${ano}`
+
+
+    alert(`${dataExtenso}`)    
+}
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

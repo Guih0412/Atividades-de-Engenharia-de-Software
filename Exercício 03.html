@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valor do Frete</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="quadro">    
+    <h2>Preencha as lacunas abaixo</h2>
+    <label>Numero de peças  <br> <input type="number" id="peca"></label><br>
+    <label>Região: <br> <input type="text" id="regiao"></label><br>
+    <label>Distancia: <br> <input type="number" id="distancia"></label><br>
+    <label>Tem Rastreamento?  <br> <input type="text" id="rastreamento"></label><br>
+    <button onclick="calcularFrete()">Confirmar</button>
+</div>
+<script>
+function calcularFrete(){
+
+    let peca = parseFloat(document.getElementById("peca").value);
+    let regiao = document.getElementById("regiao").value.toLowerCase();
+    let distancia = parseFloat(document.getElementById("distancia").value);
+    let rastreamento = document.getElementById("rastreamento").value.toLowerCase();
+
+    if (isNaN(distancia) || isNaN(peca) || (rastreamento !== "sim" && rastreamento !== "não") || (regiao !== "sul" && regiao !== "sudeste" && regiao !== "centro_oeste")) {
+        alert("Insira novamente valores válidos.");
+        return; // Se houver erro, a execução para aqui
+    }
+
+    // Valor de frete por peça para cada região
+    let precoPorPeca;
+    let descontoPorPeca = 0;
+
+    if (regiao === "sul") {
+        precoPorPeca = 1.00;
+        descontoPorPeca = 0.10; // 10% de desconto
+    } else if (regiao === "sudeste") {
+        precoPorPeca = 1.20;
+        descontoPorPeca = 0.12; // 12% de desconto
+    } else if (regiao === "centro_oeste") {
+        precoPorPeca = 1.30;
+        descontoPorPeca = 0.13; // 13% de desconto
+    }
+
+    // Cálculo do frete por peça
+    let fretePorPeca = 0;
+    if (peca <= 1000) {
+        fretePorPeca = peca * precoPorPeca;
+    } else {
+        fretePorPeca = (1000 * precoPorPeca) + ((peca - 1000) * (precoPorPeca - descontoPorPeca));
+    }
+
+    // Cálculo do frete por quilômetro
+    let taxaPorKilometro = 1.00; // Agora a taxa é 1 R$ por quilômetro
+    let freteQuilometro = distancia * taxaPorKilometro;
+
+    // Valor do rastreamento
+    let taxaRastreamento = 0;
+    if (rastreamento === "sim") {
+        taxaRastreamento = 200.00;
+    }
+
+    // Cálculo do total do frete
+    let totalFrete = fretePorPeca + freteQuilometro + taxaRastreamento;
+
+    // Exibe os resultados em alertas
+    alert(`A taxa de Rastreamento é de R$ ${taxaRastreamento.toFixed(2)}`);
+    alert(`A taxa do Frete por Peças é de R$ ${fretePorPeca.toFixed(2)}`);
+    alert(`A taxa do Frete por Quilômetro é de R$ ${freteQuilometro.toFixed(2)}`);
+    alert(`O valor total do frete é de R$ ${totalFrete.toFixed(2)}`);
+}
+</script>    
+
+</body>
+</html>

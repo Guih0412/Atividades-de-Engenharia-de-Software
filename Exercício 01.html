@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculador de IMC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div class="quadro">
+    <h2>Calculo de Índice de Massa Corporal</h2>
+    <label>Nome: <input type="text" id="nome" ></label><br><br>
+    <label>Altura: <input type="number" id="altura"></label><br><br>
+    <label>Peso: <input type="number" id="peso"></label><br><br>
+    <button onclick="calcularIMC()">Calcular</button>
+</div>
+    <p id="resultado"></p>
+
+<script>
+function calcularIMC() {
+    let nome = document.getElementById("nome").value;
+    let altura = parseFloat(document.getElementById("altura").value) / 100;
+    let peso = parseFloat(document.getElementById("peso").value);
+
+    if (!nome || isNaN(altura) || isNaN(peso) || altura <= 0 || peso <= 0) {
+        alert("Insira novamente os seus dados");
+        return;
+    }
+
+    let imc = peso / (altura * altura);
+    let classificacao = "";
+
+    if (imc < 16) {
+        classificacao = "baixo peso muito grave";
+    } else if (imc < 16.99) {
+        classificacao = "baixo peso grave";
+    } else if (imc < 18.49) {
+        classificacao = "baixo peso";
+    } else if (imc < 24.99) {
+        classificacao = "peso normal";
+    } else if (imc < 29.99) {
+        classificacao = "sobrepeso";
+    } else if (imc < 34.99) {
+        classificacao = "obesidade nível I";
+    } else if (imc < 39.99) {
+        classificacao = "obesidade nível II";
+    } else {
+        classificacao = "obesidade nível III";
+    }
+
+    alert(`${nome} possui índice de massa corporal igual a ${imc.toFixed(2)}, sendo classificado como: ${classificacao}.`);
+}
+</script>
+</body>
+</html>

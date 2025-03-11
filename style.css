@@ -1,0 +1,55 @@
+body{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   margin: 0;
+}
+
+
+.quadro {
+    background-color: #00c8ff; 
+    padding: 100px;
+    border: 2px solid #000000; 
+    text-align: center; 
+    border-radius: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 50%;
+    height: 50%;
+    font-family:Arial, Helvetica, sans-serif;
+    justify-content: center; /* Adicionado para centralizar verticalmente */
+}
+
+button {
+    cursor: pointer;
+    background-color: #250276;
+    color: white;
+    border: none;
+    border-radius: 4px; /* Deixa o botão com bordas arredondadas */
+    padding: 10px;
+    width: 20%;
+    margin-left: 30px;
+    
+}
+
+button:hover {
+    background-color: #0261a4;
+}
+
+
+input {
+    padding: 5px; 
+    margin: 1px 0; 
+    border: 2px solid #070042; 
+    border-radius: 8px; 
+    font-size: 16px; 
+    background-color: rgb(152, 253, 253);
+   
+}
+
+
+.quadro h2 {
+    margin-top: -20px; /* Ajuste negativo para trazer o título para cima */
+}
