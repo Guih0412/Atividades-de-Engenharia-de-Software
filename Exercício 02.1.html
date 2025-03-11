@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faixa etária</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quadro">
+      <h2>Digite a sua idade</h2>
+      <label>Idade: <input type="number" id="idade"></label><br><br>
+      <button onclick="faixaEtaria()">Confirmar</button>       
+    </div>
+
+    <script>
+     function faixaEtaria(){
+        let idade= parseFloat(document.getElementById("idade").value);
+
+
+        if (isNaN(idade) || idade <0){
+            alert("Digite novamente sua idade");
+            return;
+        }
+
+        let faixaEtaria= " "
+
+        if (idade <=0 && idade<15){
+           faixaEtaria= "Criança"
+        }
+
+        else if (idade <=15 && idade<30){
+           faixaEtaria= "Jovem"
+        }
+
+        else if (idade <=30 && idade<60){
+           faixaEtaria= "Adulto"
+        }
+ 
+        else{
+           faixaEtaria= "Idoso"
+        }
+   
+
+    alert(`O indivíduo tem ${idade} anos, portanto é considerado ${faixaEtaria}`)
+
+
+
+
+}
+
+
+
+
+
+    </script>
+</body>
+</html>
